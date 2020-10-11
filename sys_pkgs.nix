@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    direnv
     vim 
     xclip
     git

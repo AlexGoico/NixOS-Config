@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./spectre.nix
+      # ./spectre.nix
       ./sys_pkgs.nix
     ];
 
@@ -19,6 +19,9 @@
   # boot.loader.grub.device = "nodev";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Virtualization
+  virtualisation.docker.enable = true;
 
   # Network Settings
   networking.networkmanager.enable = true;
@@ -87,7 +90,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.typedeph = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   # This value determines the NixOS release from which the default
